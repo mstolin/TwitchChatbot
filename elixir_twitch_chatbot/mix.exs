@@ -14,6 +14,7 @@ defmodule ElixirTwitchChatbot.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
+      mod: {TwitchChatbot, []},
       extra_applications: [:logger]
     ]
   end
