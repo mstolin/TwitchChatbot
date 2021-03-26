@@ -1,15 +1,21 @@
 defmodule TwitchChatbot.Supervisor do
-  use Supervisor
+  use DynamicSupervisor
 
-  def start_link do
-    Supervisor.start_link(__MODULE__, [])
+  def start_link(_) do
+    DynamicSupervisor.start_link(__MODULE__, :ok, name: __MODULE__)
   end
 
-  def init(_) do
-    children = [
-      {TwitchChatbot.GenServer, :ok}
-    ]
+  @impl true
+  def init(:ok) do
+    DynamicSupervisor.init(strategy: :one_for_one)
+  end
 
-    Supervisor.init(children, strategy: :one_for_one)
+  def start_chatbot(config) do
+    spec = {
+      TwitchChatbot,
+      config
+    }
+
+    DynamicSupervisor.start_child(__MODULE__, spec)
   end
 end

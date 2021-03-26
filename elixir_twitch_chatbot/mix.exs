@@ -11,15 +11,13 @@ defmodule ElixirTwitchChatbot.MixProject do
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      mod: {TwitchChatbot, []},
+      mod: {Server, []},
       extra_applications: [:logger]
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       # {:dep_from_hexpm, "~> 0.3.0"},
