@@ -1,7 +1,7 @@
 defmodule TwitchChatbot.Supervisor do
   use DynamicSupervisor
 
-  def start_link(_) do
+  def start_link() do
     DynamicSupervisor.start_link(__MODULE__, :ok, name: __MODULE__)
   end
 
@@ -11,6 +11,7 @@ defmodule TwitchChatbot.Supervisor do
   end
 
   def start_chatbot(config) do
+    # TwitchChatbot.Supervisor.start_chatbot(%{channel: "papaplatte", bot_name: "schlamasssel", token: "o3clts23huuwa0exsc90vu3lqno6zc"})
     spec = {
       TwitchChatbot,
       config

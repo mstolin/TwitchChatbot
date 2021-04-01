@@ -6,15 +6,15 @@ defmodule ElixirTwitchChatbot.MixProject do
       app: :elixir_twitch_chatbot,
       version: "0.1.0",
       elixir: "~> 1.11",
-      start_permanent: Mix.env() == :prod,
+      start_permanent: Mix.env() == :dev,
       deps: deps()
     ]
   end
 
   def application do
     [
-      mod: {Server, []},
-      extra_applications: [:logger]
+      extra_applications: [:logger],
+      mod: {Server, []}
     ]
   end
 
